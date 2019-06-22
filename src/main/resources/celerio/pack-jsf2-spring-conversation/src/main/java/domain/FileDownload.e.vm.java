@@ -49,6 +49,10 @@ $output.require("${entity.model.fullType}_")##
             public byte[] getByteArray() { 
                 return ${entity.repository.var}.${attribute.getter}($entity.model.var); 
             }
+            @Override
+			public Integer getContentLength() {
+				return ${entity.repository.var}.${attribute.getter}($entity.model.var).length;
+			}
         };
 #if ($attribute.fileContentType) 
         basc.setContentType(${entity.model.var}.${attribute.fileContentType.getter}());

@@ -15,7 +15,7 @@
 $output.java($WebUtil, "PrimeFacesUtil")##
 
 $output.require("javax.servlet.http.HttpServletRequest")##
-$output.require("org.primefaces.context.RequestContext")##
+$output.require("org.primefaces.PrimeFaces")##
 
 /**
  * Use this bean to execute JavaScript on client side.
@@ -29,8 +29,8 @@ public final class $output.currentClass {
      * Tells the client to update the search results region with the passed text.
      */
     public static void updateSearchResultsRegion(String text, int nbResults) {
-        if (RequestContext.getCurrentInstance() != null) {
-            RequestContext.getCurrentInstance().execute("APP.updateSearchResultsRegion(\"" + text + "\"," + nbResults + ")");
+    	if (PrimeFaces.current() != null) {
+        	PrimeFaces.current().executeScript("APP.updateSearchResultsRegion(\"" + text + "\"," + nbResults + ")");
         }
     }
 
@@ -39,6 +39,6 @@ public final class $output.currentClass {
     }
 
     public static void forceClose() {
-        RequestContext.getCurrentInstance().execute("APP.menu.forceClose()");
+    	PrimeFaces.current().executeScript("APP.menu.forceClose()");
     }
 }

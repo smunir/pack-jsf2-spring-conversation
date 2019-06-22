@@ -24,10 +24,13 @@ $output.require("javax.faces.context.FacesContext")##
 $output.require("javax.inject.Inject")##
 $output.require("com.jaxio.jpa.querybyexample.LabelizedEnum")##
 $output.require("org.apache.poi.hssf.usermodel.HSSFWorkbook")##
+$output.require("org.apache.poi.ss.usermodel.BorderStyle")##
 $output.require("org.apache.poi.ss.usermodel.Cell")##
 $output.require("org.apache.poi.ss.usermodel.CellStyle")##
 $output.require("org.apache.poi.ss.usermodel.DataFormat")##
+$output.require("org.apache.poi.ss.usermodel.FillPatternType")##
 $output.require("org.apache.poi.ss.usermodel.Font")##
+$output.require("org.apache.poi.ss.usermodel.HorizontalAlignment")##
 $output.require("org.apache.poi.ss.usermodel.IndexedColors")##
 $output.require("org.apache.poi.ss.usermodel.Row")##
 $output.require("org.apache.poi.ss.usermodel.Sheet")##
@@ -372,7 +375,7 @@ $output.require("com.jaxio.jpa.querybyexample.TermSelector")##
         if (topHeaderStyle == null) {
             topHeaderStyle = wb.createCellStyle();
             applyCommonHeaderStyle(topHeaderStyle);
-            topHeaderStyle.setAlignment(CellStyle.ALIGN_CENTER);
+            topHeaderStyle.setAlignment(HorizontalAlignment.CENTER);
         }
 
         return topHeaderStyle;
@@ -390,21 +393,21 @@ $output.require("com.jaxio.jpa.querybyexample.TermSelector")##
     protected void applyCommonHeaderStyle(CellStyle style) {
         // font
         Font headerFont = wb.createFont();
-        headerFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
+        headerFont.setBold(true);
         style.setFont(headerFont);
 
         // color
         style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
         // border
-        style.setBorderRight(CellStyle.BORDER_THIN);
+        style.setBorderRight(BorderStyle.THIN);
         style.setRightBorderColor(IndexedColors.BLACK.getIndex());
-        style.setBorderBottom(CellStyle.BORDER_THIN);
+        style.setBorderBottom(BorderStyle.THIN);
         style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-        style.setBorderLeft(CellStyle.BORDER_THIN);
+        style.setBorderLeft(BorderStyle.THIN);
         style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
-        style.setBorderTop(CellStyle.BORDER_THIN);
+        style.setBorderTop(BorderStyle.THIN);
         style.setTopBorderColor(IndexedColors.BLACK.getIndex());
     }
 
